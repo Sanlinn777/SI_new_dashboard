@@ -112,14 +112,14 @@ else:
     #Tsps Data Frame
     df_tsp= df_si.groupby(['Tsp'], as_index= False).agg({'YEAR':'count'})  # Updated column name
     df_tsp = df_tsp.sort_values('YEAR', ascending= False)
-    df_tsp = df_tsp.rename(columns={'YEAR':'Total Referral'},inplace=True)
+    df_tsp.rename(columns={'YEAR':'Total Referral'},inplace=True)
 
     st.subheader('Township with Highest Referral')
-    st.write(df_tsp, use_container_width=True)
+    st.write(df_tsp)
 
     #Tsps Bar Plot
     fig_tsp, ax = plt.subplots(figsize=(30, 10))
-    sns.barplot(x=df_tsp['Tsp'], y=df_tsp['YEAR'], ax= ax)
+    sns.barplot(x=df_tsp['Tsp'], y=df_tsp['Total Referral'], ax= ax)
     ax.set_xlabel('Townships')
     ax.set_ylabel('Total Referral')
     ax.set_title('Township-wise Referral')
