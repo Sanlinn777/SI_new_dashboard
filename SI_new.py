@@ -220,6 +220,18 @@ else:
     plt.xticks(rotation=90)
     st.pyplot(fig_trend)
 
+    #Yearly Data Frame
+    df_yr_trend= df_si.groupby(['YEAR'], as_index= False).agg({'Tsp':'count'})
+
+    #Yearly Trend
+    fig_yr_trend, ax = plt.subplots(figsize=(20,10))
+    plt.plot(df_yr_trend['YEAR'], df_yr_trend['Tsp'])
+    ax.set_xlabel('Year')
+    ax.set_ylabel('Total Referral')
+    ax.set_title('Yearly Referral Patients')
+    plt.xticks(rotation=90)
+    st.pyplot(fig_yr_trend)
+
 
 
 
