@@ -55,15 +55,20 @@ df_si = load_data()
 
 # ---- SIDEBAR ----
 st.sidebar.header("Please Filter Here:")
+
+df_sr_sort= df_si.sort_values('StatesRegions', ascending= True)
+
 State = st.sidebar.multiselect(
     "Select the State & Region:",
-   options=df_si["StatesRegions"].unique(),
-    default= df_si["StatesRegions"].unique())
+   options=df_sr_sort["StatesRegions"].unique(),
+    default= ['Yangon'])
+
+df_tsp_sort = df_si.query( "StatesRegions == @State").sort_values('Tsp', ascending= True)
 
 Township = st.sidebar.multiselect(
     "Select the Township:",
-   options=df_si["Tsp"].unique(),
-    default= df_si["Tsp"].unique())
+   options= df_tsp_sort["Tsp"].unique(),
+    default= df_tsp_sort["Tsp"].unique())
 
 Year = st.sidebar.multiselect(
     "Select the Year:",
