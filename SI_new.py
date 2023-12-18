@@ -60,6 +60,11 @@ State = st.sidebar.multiselect(
    options=df_si["StatesRegions"].unique(),
     default= df_si["StatesRegions"].unique())
 
+Township = st.sidebar.multiselect(
+    "Select the Township:",
+   options=df_si["Tsp"].unique(),
+    default= df_si["Tsp"].unique())
+
 Year = st.sidebar.multiselect(
     "Select the Year:",
    options=df_si["YEAR"].unique(),
@@ -77,7 +82,7 @@ selected_sex = st.sidebar.multiselect(
     default=['Male','Female'])
 
 # Apply filter
-df_si = df_si.query( "StatesRegions == @State & YEAR == @Year & Age >= @selected_age[0] & Age <= @selected_age[1] & Sex in @selected_sex"
+df_si = df_si.query( "StatesRegions == @State & Tsp == @Township & YEAR == @Year & Age >= @selected_age[0] & Age <= @selected_age[1] & Sex in @selected_sex"
 )
 
 
