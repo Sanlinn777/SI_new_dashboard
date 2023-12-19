@@ -4,6 +4,7 @@ import plotly.express as px
 import matplotlib.pyplot as plt
 import streamlit as st 
 import seaborn as sns
+from matplotlib.ticker import MaxNLocator
 
 st.set_page_config(page_title="Scheme I referral", page_icon=":bar_chart:", layout="wide")
 
@@ -229,6 +230,7 @@ else:
     ax.set_xlabel('Year')
     ax.set_ylabel('Total Referral')
     ax.set_title('Yearly Referral Patients')
+    ax.xaxis.set_major_locator(MaxNLocator(integer=True))
     plt.xticks(rotation=90)
     st.pyplot(fig_yr_trend)
 
