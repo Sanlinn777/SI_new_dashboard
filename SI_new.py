@@ -46,6 +46,7 @@ def load_data():
     df['TBsite'].replace('EP','Extrapulmonary', inplace = True)
     df['Bacteriological'].replace('B','Bact_confirm', inplace = True)
     df['Bacteriological'].replace('C','Clinical_Dx', inplace = True)
+    df['StatesRegions'].replace('NayPyitaw','Naypyitaw', inplace = True)
 
     return df
 
